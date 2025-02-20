@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  chatbot-ui:
+    image: ghcr.io/mckaywrigley/chatbot-ui:main
+    container_name: chatbot-ui
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      - OPENAI_API_HOST=${OPENAI_API_HOST}
+      - OPENAI_API_TYPE=${OPENAI_API_TYPE}
+      - OPENAI_API_VERSION=${OPENAI_API_VERSION}
+      - DEFAULT_MODEL=${DEFAULT_MODEL}
+      - NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT=${NEXT_PUBLIC_DEFAULT_SYSTEM_PROMPT}
+      - NEXT_PUBLIC_DEFAULT_TEMPERATURE=${NEXT_PUBLIC_DEFAULT_TEMPERATURE}
+    ports:
+      - "3000:3000"
+    restart: always
+    # Optionally add volume or other configurations
+    volumes:
+      - .:/app
